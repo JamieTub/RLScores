@@ -1,10 +1,19 @@
-const express = require('express');
+import { WebScraper } from './models/webscraper';
+import { Player } from './models/player';
 
+//setup express
+const express = require('express');
 const app = new express();
 
+//import webscraper
+const scraper = new WebScraper();
+const player = new Player('https://liquipedia.net/rocketleague/AYYJAYY');
+
+//routes
 app.get('/', (req, res) => {
-    res.send("hello");
+    res.send(player.model);  
 });
 
-console.log("app started on localhost:5000, ctrl+c to exit")
-app.listen(5000);
+//start server
+console.log("app started on localhost:4200, ctrl+c to exit")
+app.listen(4200);
